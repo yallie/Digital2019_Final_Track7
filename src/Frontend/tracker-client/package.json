@@ -2,6 +2,7 @@
   "name": "tracker-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://localhost:37000/Content",
   "dependencies": {
     "@types/jest": "24.0.18",
     "@types/node": "12.7.8",
