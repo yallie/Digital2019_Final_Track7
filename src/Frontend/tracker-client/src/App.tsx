@@ -24,15 +24,16 @@ const App: React.FC = () => {
 				>
 					<Menu.Item key="main" onClick={getSetPage("main")}>Главная</Menu.Item>
 					<Menu.Item key="tasks" onClick={getSetPage("tasks")}>Задания такелажнику</Menu.Item>
-					<Menu.Item key="map" onClick={getSetPage("map")}>Администратор</Menu.Item>
+					<Menu.Item key="maps" onClick={getSetPage("maps")}>Управление картами</Menu.Item>
+					<Menu.Item key="admin" onClick={getSetPage("admin")}>Администратор</Menu.Item>
 				</Menu>
 			</Header>
 
 			<Content style={{ padding: '0 50px' }}>
 				<Breadcrumb style={{ margin: '16px 0' }}>
-					<Breadcrumb.Item>Home</Breadcrumb.Item>
-					<Breadcrumb.Item>List</Breadcrumb.Item>
-					<Breadcrumb.Item>App</Breadcrumb.Item>
+					<Breadcrumb.Item>Цифровой прорыв 2019</Breadcrumb.Item>
+					<Breadcrumb.Item>РосАтом</Breadcrumb.Item>
+					<Breadcrumb.Item>Умная логистика</Breadcrumb.Item>
 				</Breadcrumb>
 
 				<div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
