@@ -28,6 +28,15 @@ const App: React.FC = () => {
 	const [page, setPage] = useState('tasks' as Page)
 	const getSetPage = (page: Page) => () => setPage(page)
 
+    const getSetPage1 = () => {
+        return () =>{
+            window.open(
+                'http://localhost:8080',
+                '_blank' // <- This is what makes it open in a new window.
+            );
+        }
+    }
+
 	return (
 		<Layout className="layout">
 			<Header>
@@ -40,7 +49,7 @@ const App: React.FC = () => {
 				>
 					<Menu.Item key="main" onClick={getSetPage("main")}>Главная</Menu.Item>
 					<Menu.Item key="tasks" onClick={getSetPage("tasks")}>Мониторинг задач</Menu.Item>
-					<Menu.Item key="maps" onClick={getSetPage("maps")}>Управление картами</Menu.Item>
+					<Menu.Item key="maps" onClick={getSetPage1()}>Управление картами</Menu.Item>
 					<Menu.Item key="admin" onClick={getSetPage("admin")}>Администратор</Menu.Item>
 				</Menu>
 			</Header>
