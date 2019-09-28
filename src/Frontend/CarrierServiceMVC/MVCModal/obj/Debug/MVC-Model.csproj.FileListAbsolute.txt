@@ -1,6 +1,0 @@
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\bin\Debug\MVCModal.dll
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\bin\Debug\MVCModal.pdb
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVC-Model.csprojAssemblyReference.cache
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVCModal.dll
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVCModal.pdb

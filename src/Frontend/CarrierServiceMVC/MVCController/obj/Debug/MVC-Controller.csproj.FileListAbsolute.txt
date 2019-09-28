@@ -1,9 +1,0 @@
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\bin\Debug\MVCController.dll
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\bin\Debug\MVCController.pdb
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\bin\Debug\MVCModal.dll
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\bin\Debug\MVCModal.pdb
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\obj\Debug\MVC-Controller.csprojAssemblyReference.cache
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\obj\Debug\MVC-Controller.csproj.CoreCompileInputs.cache
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\obj\Debug\MVC-Controller.csproj.CopyComplete
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\obj\Debug\MVCController.dll
-C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCController\obj\Debug\MVCController.pdb
