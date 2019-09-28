@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import TaskList from './components/TaskList';
 import Overview from './components/Overview';
+import PlanEditor from './components/PlanEditor';
 
 const { Header, Content, Footer } = Layout;
 
@@ -14,6 +15,7 @@ type Page =
     'main'
     | 'tasks'
     | 'maps'
+    | 'plan'
     | 'admin'
 
 function renderPage(page: Page) {
@@ -22,6 +24,8 @@ function renderPage(page: Page) {
             return <Overview/>
         case 'tasks':
             return <TaskList/>
+        case 'plan':
+            return <PlanEditor />
         default:
             return '404'
     }
@@ -53,7 +57,8 @@ const App: React.FC = () => {
 				>
 					<Menu.Item key="main" onClick={getSetPage("main")}>Главная</Menu.Item>
 					<Menu.Item key="tasks" onClick={getSetPage("tasks")}>Мониторинг задач</Menu.Item>
-					<Menu.Item key="maps" onClick={getSetPage1()}>Управление картами</Menu.Item>
+					<Menu.Item key="maps" onClick={getSetPage1()}>Редактор карт1</Menu.Item>
+					<Menu.Item key="plan" onClick={getSetPage('plan')}>Редактор карт2</Menu.Item>
 					<Menu.Item key="admin" onClick={getSetPage("admin")}>Администратор</Menu.Item>
 				</Menu>
 			</Header>
