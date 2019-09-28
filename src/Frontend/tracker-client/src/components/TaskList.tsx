@@ -19,7 +19,7 @@ const columns = [
         key: 'age',
     },
     {
-        title: 'Исполнитель',
+        title: 'Ответственный',
         dataIndex: 'driver',
         key: 'driver',
     },
@@ -50,9 +50,9 @@ const columns = [
             <span>
                 <a>Чат с исполнителем</a>
                 <Divider type="vertical" />
-                <a>Сменить исполнителя</a>
+                <a>Сменить ответственного</a>
                 <Divider type="vertical" />
-                <a>ОТМЕНА</a>
+                <a>Отменить задание</a>
             </span>
         ),
     },
@@ -83,5 +83,11 @@ const data = [
 ];
 
 export default function TaskList() {
-    return <Table columns={columns} dataSource={data} />
+    return (
+        <Table
+            columns={columns}
+            dataSource={data}
+            expandedRowRender={record => <p style={{ margin: 0 }}>Hello!</p>}
+        />
+    )
 }
