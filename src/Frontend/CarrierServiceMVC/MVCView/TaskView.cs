@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -51,8 +52,8 @@ namespace WinFormMVC.View
 
             this.tasksListView.Columns.Add("Номер");
             this.tasksListView.Columns.Add("Задача", -1, HorizontalAlignment.Left);
-            //this.tasksListView.Columns.Add("Выполнено", 50,  HorizontalAlignment.Left);
-            
+            this.tasksListView.Columns.Add("Детали задачи", -1, HorizontalAlignment.Left);            
+
             this.tasksListView.Items.Clear();
         }
 
@@ -61,14 +62,15 @@ namespace WinFormMVC.View
             ListViewItem parent;
             parent = this.tasksListView.Items.Add(carrierTask.ID.ToString());
             parent.SubItems.Add(carrierTask.TaskName);            
+            parent.SubItems.Add(carrierTask.TaskDetails);            
         }
 
-        public string GetIdOfSelectedUserInGrid()
+        private int GetIdOfSelectedUserInGrid()
         {
-            if (this.tasksListView.SelectedItems.Count > 0)
-                return this.tasksListView.SelectedItems[0].Text;
+            if (tasksListView.SelectedItems.Count > 0)
+                return int.Parse(tasksListView.SelectedItems[0].Text);
             else
-                return "";
+                return 0;
         }
 
         public void SetSelectedUserInGrid(CarrierTask usr)
@@ -84,9 +86,37 @@ namespace WinFormMVC.View
 
         public void ShowTaskDetails(CarrierTask task)
         {
-            detailsRichTextBox.Text = task.TaskDetails;
+            if (string.IsNullOrEmpty(task.MapPicturePath))
+                return;
+            mapPictureBox.Image = Image.FromFile(task.MapPicturePath);
         }
 
         #endregion
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var selectedTaskId = GetIdOfSelectedUserInGrid();
+            _controller.CompleteTaskWithId(selectedTaskId); 
+        }
+
+        public void RemoveTaskFromListView(CarrierTask taskToRemove)
+        {
+            ListViewItem rowToRemove = null;
+
+            foreach (ListViewItem row in tasksListView.Items)
+            {
+                if (row.Text == taskToRemove.ID.ToString())
+                {
+                    rowToRemove = row;
+                }
+            }
+
+            if (rowToRemove != null)
+            {
+                tasksListView.Items.Remove(rowToRemove);
+                tasksListView.Focus();
+            }
+
+        }
     }
 }
