@@ -5,7 +5,17 @@ import 'antd/dist/antd.css';
 import { useState } from 'react';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
+import TaskList from './components/TaskList';
 const { Header, Content, Footer } = Layout;
+
+function renderPage(page: string) {
+    switch (page) {
+        case 'tasks':
+            return <TaskList/>
+        default:
+            return '404'
+    }
+}
 
 const App: React.FC = () => {
 
@@ -37,7 +47,7 @@ const App: React.FC = () => {
 				</Breadcrumb>
 
 				<div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-					{page}
+                    {renderPage(page)}
 				</div>
 
 			</Content>
