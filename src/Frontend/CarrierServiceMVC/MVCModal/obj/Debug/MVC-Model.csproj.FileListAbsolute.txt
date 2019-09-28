@@ -4,3 +4,9 @@ C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVC-
 C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
 C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVCModal.dll
 C:\Users\Georgy\Downloads\MVCwithWimForms_src\WinFormMVC\MVCModal\obj\Debug\MVCModal.pdb
+D:\Хакатон\Track7\src\Frontend\CarrierServiceMVC\MVCModal\bin\Debug\MVCModal.dll
+D:\Хакатон\Track7\src\Frontend\CarrierServiceMVC\MVCModal\bin\Debug\MVCModal.pdb
+D:\Хакатон\Track7\src\Frontend\CarrierServiceMVC\MVCModal\obj\Debug\MVC-Model.csprojAssemblyReference.cache
+D:\Хакатон\Track7\src\Frontend\CarrierServiceMVC\MVCModal\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
+D:\Хакатон\Track7\src\Frontend\CarrierServiceMVC\MVCModal\obj\Debug\MVCModal.dll
+D:\Хакатон\Track7\src\Frontend\CarrierServiceMVC\MVCModal\obj\Debug\MVCModal.pdb

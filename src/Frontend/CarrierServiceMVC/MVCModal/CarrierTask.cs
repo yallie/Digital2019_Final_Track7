@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace WinFormMVC.Model
 {
@@ -42,6 +43,19 @@ namespace WinFormMVC.Model
         {
             get { return _taskDetails; }
             set { _taskDetails = value; }
+        }
+
+        private string _mapPicturePath;
+        public string MapPicturePath
+        {
+            get { return _mapPicturePath; }
+            set
+            {
+                if (!File.Exists(value))
+                    Console.WriteLine("Error! There is no such file with map!");
+                else
+                    _mapPicturePath = value;
+            }
         }
 
 

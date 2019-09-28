@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -51,8 +52,9 @@ namespace WinFormMVC.View
 
             this.tasksListView.Columns.Add("Номер");
             this.tasksListView.Columns.Add("Задача", -1, HorizontalAlignment.Left);
+            this.tasksListView.Columns.Add("Детали задачи", -1, HorizontalAlignment.Left);
             //this.tasksListView.Columns.Add("Выполнено", 50,  HorizontalAlignment.Left);
-            
+
             this.tasksListView.Items.Clear();
         }
 
@@ -61,6 +63,7 @@ namespace WinFormMVC.View
             ListViewItem parent;
             parent = this.tasksListView.Items.Add(carrierTask.ID.ToString());
             parent.SubItems.Add(carrierTask.TaskName);            
+            parent.SubItems.Add(carrierTask.TaskDetails);            
         }
 
         public string GetIdOfSelectedUserInGrid()
@@ -84,7 +87,9 @@ namespace WinFormMVC.View
 
         public void ShowTaskDetails(CarrierTask task)
         {
-            detailsRichTextBox.Text = task.TaskDetails;
+            if (string.IsNullOrEmpty(task.MapPicturePath))
+                return;
+            mapPictureBox.Image = Image.FromFile(task.MapPicturePath);
         }
 
         #endregion
