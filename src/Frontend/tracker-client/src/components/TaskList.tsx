@@ -62,7 +62,17 @@ const columns = [
     },
 ];
 
-const data = [
+interface ITrackedItem {
+    key: string
+    age: number
+    name: string
+    driver: string
+    tags: string[]
+    mapCenter: [number, number]
+    mapPosition: [number, number]
+}
+
+const data: ITrackedItem[] = [
   {
     key: '112316',
     name: 'Уран-гадолиниевые таблетки для ВВЭР-1000 в Цех3',
@@ -78,8 +88,8 @@ const data = [
     age: 32,
     driver: 'Петр Капица',
     tags: ['ок', 'завершено'],
-    mapCenter: [55.641357, 37.687478],
-    mapPosition: [55.642421, 37.683814],
+    mapCenter: [55.709780, 37.631195],
+    mapPosition: [55.709780, 37.631195],
   },
   {
     key: '112313',
@@ -87,8 +97,8 @@ const data = [
     age: 88,
     driver: 'Алексей Новоселов',
     tags: ['отклонение', 'задержка'],
-    mapCenter: [55.641357, 37.687478],
-    mapPosition: [55.642421, 37.683814],
+    mapCenter: [55.709780, 37.631195],
+    mapPosition: [55.709780, 37.631195],
   },
 ];
 
@@ -103,9 +113,9 @@ export default function TaskList() {
                 // 50.879, 4.6997 -- оригинал
                 // 50.874, 4.6947 -- оригинал маркер
                 // 55.641357, 37.687478
-                record => (
-                    <Map center={[55.709780, 37.631195]} zoom={15} width={600} height={400}>
-                        <Marker anchor={[55.709780, 37.631195]} payload={1} onClick={
+                (record: ITrackedItem) => (
+                    <Map center={record.mapCenter} zoom={15} width={600} height={400}>
+                        <Marker anchor={record.mapPosition} payload={1} onClick={
                             ({ event, anchor, payload }: { event: any, anchor: any, payload: any }) => {}
                         } />
 
