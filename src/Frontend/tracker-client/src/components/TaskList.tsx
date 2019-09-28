@@ -5,6 +5,8 @@ import Map from 'pigeon-maps'
 import Marker from 'pigeon-marker'
 import Overlay from 'pigeon-overlay'
 
+import { trackedItems, ITrackedItem } from '../data/tasks'
+
 const columns = [
     {
         title: 'Код',
@@ -18,9 +20,9 @@ const columns = [
         render: (text: string) => <a>{text}</a>,
     },
     {
-        title: 'Мест',
-        dataIndex: 'age',
-        key: 'age',
+        title: 'Позиций',
+        dataIndex: 'quantity',
+        key: 'quantity',
     },
     {
         title: 'Ответственный',
@@ -35,7 +37,7 @@ const columns = [
             <span>
                 {tags.map(tag => {
                 let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'отклонение' || tag === 'задержка') {
+                if (tag === 'отклонение' || tag === 'задержка' || tag == 'связь утеряна') {
                     color = 'volcano';
                 }
                 return (
@@ -62,51 +64,11 @@ const columns = [
     },
 ];
 
-interface ITrackedItem {
-    key: string
-    age: number
-    name: string
-    driver: string
-    tags: string[]
-    mapCenter: [number, number]
-    mapPosition: [number, number]
-}
-
-const data: ITrackedItem[] = [
-  {
-    key: '112316',
-    name: 'Уран-гадолиниевые таблетки для ВВЭР-1000 в Цех3',
-    age: 42,
-    driver: 'Григорий Перельман',
-    tags: ['в работе'],
-    mapCenter: [55.641357, 37.687478],
-    mapPosition: [55.642421, 37.683814]
-  },
-  {
-    key: '112312',
-    name: 'Лопасти для сборки турбин в Цех2',
-    age: 32,
-    driver: 'Петр Капица',
-    tags: ['ок', 'завершено'],
-    mapCenter: [55.709780, 37.631195],
-    mapPosition: [55.709780, 37.631195],
-  },
-  {
-    key: '112313',
-    name: 'Защитные оболочки для ПЭЛ СУЗ в Цех3',
-    age: 88,
-    driver: 'Алексей Новоселов',
-    tags: ['отклонение', 'задержка'],
-    mapCenter: [55.705640, 37.589775],
-    mapPosition: [55.705640, 37.589775],
-  },
-];
-
 export default function TaskList() {
     return (
         <Table
             columns={columns}
-            dataSource={data}
+            dataSource={trackedItems}
             expandedRowRender={
                 // <p style={{ margin: 0 }}>Hello!</p>
                 // 49.299952 55.611509 -- Казань-Экспо (пусто)
@@ -120,7 +82,7 @@ export default function TaskList() {
                         } />
 
                         <Overlay anchor={[50.879, 4.6997]} offset={[120, 79]}>
-                        <img src='pigeon.jpg' width={240} height={158} alt='' />
+                            <img src='pigeon.jpg' width={240} height={158} alt='' />
                         </Overlay>
                     </Map>
                 )
