@@ -1,0 +1,217 @@
+{
+	"Чек-пойнт": [
+		{
+			"name": "Добавить",
+			"description": "",
+			"type": "marker",
+			"icon": {
+                "prefix": "fas",
+                "name": "map-marker-alt"
+            },
+            "option": {
+                "type": "i-text",
+                "text": "\uf3c5",
+                "fontFamily": "Font Awesome 5 Free",
+                "fontWeight": 900,
+                "fontSize": 60,
+                "width": 30,
+                "height": 30,
+                "editable": false,
+                "name": "New marker"
+            }
+		}
+	],
+	"Текстовое поле": [
+		{
+			"name": "Добавить",
+			"description": "",
+			"type": "text",
+			"icon": {
+                "prefix": "fas",
+                "name": "font"
+            },
+            "option": {
+                "type": "textbox",
+                "text": "",
+                "width": 60,
+                "height": 30,
+                "fontSize": 32,
+                "name": "New text"
+            }
+		}
+	],
+	"Картинки": [
+		{
+			"name": "Добавить",
+			"description": "",
+			"type": "image",
+			"icon": {
+                "prefix": "fas",
+                "name": "image"
+            },
+            "option": {
+                "type": "image",
+                "width": 160,
+                "height": 160,
+                "name": "New image",
+                "src": "./images/sample/transparentBg.png"
+            }
+		}
+	],
+	"ЗОНЫ": [
+		{
+			"name": "Зона погрузки",
+			"description": "",
+			"type": "shape",
+			"icon": {
+                "prefix": "fas",
+                "name": "play",
+                "style": {
+                    "transform": "rotate(270deg)"
+                }
+            },
+            "option": {
+                "type": "triangle",
+                "width": 30,
+                "height": 30,
+                "name": "New shape"
+            }
+        },
+        {
+			"name": "Складская зона",
+			"description": "",
+			"type": "shape",
+			"icon": {
+                "prefix": "fas",
+                "name": "stop"
+            },
+            "option": {
+                "type": "rect",
+                "width": 40,
+                "height": 40,
+                "name": "New shape"
+            }
+        },
+        {
+			"name": "Зона обработки",
+			"description": "",
+			"type": "shape",
+			"icon": {
+                "prefix": "fas",
+                "name": "circle"
+            },
+            "option": {
+                "type": "circle",
+                "radius": 30,
+                "name": "New shape"
+            }
+		}
+	],
+	"Трассы": [
+		{
+			"name": "Полигон",
+			"description": "",
+			"type": "drawing",
+			"icon": {
+                "prefix": "fas",
+                "name": "draw-polygon"
+            },
+            "option": {
+                "type": "polygon",
+                "name": "New polygon"
+            }
+        },
+        {
+            "name": "Прямая двунаправленная",
+            "description": "",
+            "type": "drawing",
+			"icon": {
+                "prefix": "fas",
+                "name": "minus"
+            },
+            "option": {
+                "type": "line",
+                "name": "New line"
+            }
+        },
+        {
+            "name": "Однонаправленная",
+            "description": "",
+            "type": "drawing",
+			"icon": {
+                "prefix": "fas",
+                "name": "long-arrow-alt-right"
+            },
+            "option": {
+                "type": "arrow",
+                "name": "New arrow"
+            }
+        }
+	],
+	"Дополнительные": [
+		{
+			"name": "Element",
+			"description": "",
+			"type": "dom_element",
+			"icon": {
+                "prefix": "fab",
+                "name": "html5"
+            },
+            "option": {
+                "type": "element",
+                "width": 480,
+                "height": 270,
+                "name": "New element"
+            }
+        },
+        {
+			"name": "IFrame",
+			"description": "",
+			"type": "dom_element",
+			"icon": {
+                "prefix": "fas",
+                "name": "window-maximize"
+            },
+            "option": {
+                "type": "iframe",
+                "width": 480,
+                "height": 270,
+                "name": "New iframe"
+            }
+        },
+        {
+			"name": "Video",
+			"description": "",
+			"type": "dom_element",
+			"icon": {
+                "prefix": "fab",
+                "name": "youtube"
+            },
+            "option": {
+                "type": "video",
+                "width": 480,
+                "height": 270,
+                "name": "New video",
+                "autoplay": true,
+                "muted": true,
+                "loop": true
+            }
+		}
+    ],
+    "Макет": [
+        {
+            "name": "Добавить",
+            "description": "",
+            "type": "default",
+            "icon": {
+                "prefix": "fas",
+                "name": "bezier-curve"
+            },
+            "option": {
+                "type": "svg",
+                "name": "New SVG",
+                "loadType": "svg"
+            }
+        }
+    ]
+}
