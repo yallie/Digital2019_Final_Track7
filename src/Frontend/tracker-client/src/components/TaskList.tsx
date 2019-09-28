@@ -2,76 +2,83 @@ import React from 'react';
 import { Table, Divider, Tag } from 'antd';
 
 const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text: string) => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (tags: any[]) => (
-      <span>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </span>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (text: string, record: any) => (
-      <span>
-        <a>Invite {record.name}</a>
-        <Divider type="vertical" />
-        <a>Delete</a>
-      </span>
-    ),
-  },
+    {
+        title: 'Код',
+        dataIndex: 'key',
+        key: 'key',
+    },
+    {
+        title: 'Описание задачи',
+        dataIndex: 'name',
+        key: 'name',
+        render: (text: string) => <a>{text}</a>,
+    },
+    {
+        title: 'Мест',
+        dataIndex: 'age',
+        key: 'age',
+    },
+    {
+        title: 'Исполнитель',
+        dataIndex: 'driver',
+        key: 'driver',
+    },
+    {
+        title: 'Статус задачи',
+        key: 'tags',
+        dataIndex: 'tags',
+        render: (tags: any[]) => (
+            <span>
+                {tags.map(tag => {
+                let color = tag.length > 5 ? 'geekblue' : 'green';
+                if (tag === 'отклонение' || tag === 'задержка') {
+                    color = 'volcano';
+                }
+                return (
+                    <Tag color={color} key={tag}>
+                    {tag.toUpperCase()}
+                    </Tag>
+                );
+                })}
+            </span>
+        ),
+    },
+    {
+        title: 'Действия',
+        key: 'action',
+        render: (text: string, record: any) => (
+            <span>
+                <a>Чат с исполнителем</a>
+                <Divider type="vertical" />
+                <a>Сменить исполнителя</a>
+                <Divider type="vertical" />
+                <a>ОТМЕНА</a>
+            </span>
+        ),
+    },
 ];
 
 const data = [
   {
-    key: '1',
-    name: 'John Brown',
+    key: '112312',
+    name: 'Комплекты для сборки турбин в Цех2',
     age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+    driver: 'Петр Капица',
+    tags: ['ок', 'завершено'],
   },
   {
-    key: '2',
-    name: 'Jim Green',
+    key: '112316',
+    name: 'Таблетки UF4 для ТВЭЛ в Цех3',
     age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    driver: 'Григорий Перельман',
+    tags: ['в работе'],
   },
   {
-    key: '3',
-    name: 'Joe Black',
+    key: '112313',
+    name: '',
     age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    driver: 'Алексей Новоселов',
+    tags: ['отклонение', 'задержка'],
   },
 ];
 

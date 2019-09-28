@@ -8,7 +8,13 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import TaskList from './components/TaskList';
 const { Header, Content, Footer } = Layout;
 
-function renderPage(page: string) {
+type Page =
+    'main'
+    | 'tasks'
+    | 'maps'
+    | 'admin'
+
+function renderPage(page: Page) {
     switch (page) {
         case 'tasks':
             return <TaskList/>
@@ -19,8 +25,8 @@ function renderPage(page: string) {
 
 const App: React.FC = () => {
 
-	const [page, setPage] = useState("main")
-	const getSetPage = (page: string) => () => setPage(page)
+	const [page, setPage] = useState('tasks' as Page)
+	const getSetPage = (page: Page) => () => setPage(page)
 
 	return (
 		<Layout className="layout">
@@ -33,7 +39,7 @@ const App: React.FC = () => {
 					style={{ lineHeight: '64px' }}
 				>
 					<Menu.Item key="main" onClick={getSetPage("main")}>Главная</Menu.Item>
-					<Menu.Item key="tasks" onClick={getSetPage("tasks")}>Задания такелажнику</Menu.Item>
+					<Menu.Item key="tasks" onClick={getSetPage("tasks")}>Мониторинг задач</Menu.Item>
 					<Menu.Item key="maps" onClick={getSetPage("maps")}>Управление картами</Menu.Item>
 					<Menu.Item key="admin" onClick={getSetPage("admin")}>Администратор</Menu.Item>
 				</Menu>
