@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Divider, Tag } from 'antd';
+import { Table, Divider, Tag, Modal, Col, Row } from 'antd';
 
 import Map from 'pigeon-maps'
 import Marker from 'pigeon-marker'
@@ -33,19 +33,20 @@ const columns = [
         title: 'Статус задачи',
         key: 'tags',
         dataIndex: 'tags',
-        render: (tags: any[]) => (
+        render: (tags: string[]) => (
             <span>
                 {tags.map(tag => {
-                let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'отклонение' || tag === 'задержка' || tag == 'связь утеряна') {
-                    color = 'volcano';
-                }
-                return (
-                    <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                    </Tag>
-                );
-                })}
+                    let color = tag.length > 5 ? 'geekblue' : 'green';
+                    if (tag === 'отклонение' || tag === 'задержка' || tag == 'связь утеряна') {
+                        color = 'volcano';
+                    }
+
+                    return (
+                        <Tag color={color} key={tag}>
+                            {tag.toUpperCase()}
+                        </Tag>
+                    );
+                    })}
             </span>
         ),
     },
@@ -64,6 +65,16 @@ const columns = [
     },
 ];
 
+const articleColumns = [{
+    title: "Номенклатура",
+    key: "0",
+    dataIndex: "0",
+}, {
+    title: "Количество",
+    key: "1",
+    dataIndex: "1",
+}]
+
 export default function TaskList() {
     return (
         <Table
@@ -76,15 +87,34 @@ export default function TaskList() {
                 // 50.874, 4.6947 -- оригинал маркер
                 // 55.641357, 37.687478
                 (record: ITrackedItem) => (
-                    <Map center={record.mapCenter} zoom={15} width={600} height={400}>
-                        <Marker anchor={record.mapPosition} payload={1} onClick={
-                            ({ event, anchor, payload }: { event: any, anchor: any, payload: any }) => {}
-                        } />
+                    <Row type="flex">
+                        <Col span={12}>
+                            <Map center={record.mapCenter} zoom={15} width={600} height={400}>
+                                <Marker anchor={record.mapPosition} payload={record} onClick={
+                                    ({ event, anchor, payload }: { event: any, anchor: any, payload: ITrackedItem }) => {
+                                        Modal.info({
+                                            title: payload.name,
+                                            content: (
+                                                <div>
+                                                    <h3>{payload.driver}</h3>
+                                                    <ol>
+                                                        {payload.articles.map(a => <li key={a[0]}>{a[0]} — {a[1]} шт.</li>)}
+                                                    </ol>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                } />
 
-                        <Overlay anchor={[50.879, 4.6997]} offset={[120, 79]}>
-                            <img src='pigeon.jpg' width={240} height={158} alt='' />
-                        </Overlay>
-                    </Map>
+                                <Overlay anchor={[50.879, 4.6997]} offset={[120, 79]}>
+                                    <img src='pigeon.jpg' width={240} height={158} alt='' />
+                                </Overlay>
+                            </Map>
+                        </Col>
+                        <Col span={12}>
+                            <Table dataSource={record.articles} columns={articleColumns} />
+                        </Col>
+                    </Row>
                 )
             }
         />
