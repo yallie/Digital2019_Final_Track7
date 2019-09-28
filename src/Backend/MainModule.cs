@@ -9,9 +9,11 @@ namespace Track7
 {
 	public class MainModule : NancyModule
 	{
-		public MainModule()
+		public MainModule() : base("/api/v1")
 		{
 			Get("/", _ => "Hello World!");
+
+			Get("/tasks", _ => "Tasks");
 		}
 	}
 }
