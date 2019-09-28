@@ -50,7 +50,37 @@ namespace WinFormMVC.Controller
                     break;
                 }
             }
-        }     
+        }
 
+        public void CompleteTaskWithId(int id)
+        {   
+            CarrierTask taskToRemove = null;
+
+            if (id > 0)
+            {
+                foreach (CarrierTask carrierTask in _tasks)
+                {
+                    if (carrierTask.ID == id)
+                    {
+                        taskToRemove = carrierTask;
+                        break;
+                    }
+                }
+
+                if (taskToRemove != null)
+                {
+                    int newSelectedIndex = _tasks.IndexOf(taskToRemove);
+                    _tasks.Remove(taskToRemove);
+                    _view.RemoveTaskFromListView(taskToRemove);
+
+                    if (newSelectedIndex > -1 && newSelectedIndex < _tasks.Count)
+                    {
+                        this._view.SetSelectedUserInGrid((CarrierTask)_tasks[newSelectedIndex]);
+                    }
+                }
+            }
+         
+
+        }
     }
 }

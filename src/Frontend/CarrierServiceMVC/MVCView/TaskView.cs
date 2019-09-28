@@ -52,8 +52,7 @@ namespace WinFormMVC.View
 
             this.tasksListView.Columns.Add("Номер");
             this.tasksListView.Columns.Add("Задача", -1, HorizontalAlignment.Left);
-            this.tasksListView.Columns.Add("Детали задачи", -1, HorizontalAlignment.Left);
-            //this.tasksListView.Columns.Add("Выполнено", 50,  HorizontalAlignment.Left);
+            this.tasksListView.Columns.Add("Детали задачи", -1, HorizontalAlignment.Left);            
 
             this.tasksListView.Items.Clear();
         }
@@ -66,12 +65,12 @@ namespace WinFormMVC.View
             parent.SubItems.Add(carrierTask.TaskDetails);            
         }
 
-        public string GetIdOfSelectedUserInGrid()
+        private int GetIdOfSelectedUserInGrid()
         {
-            if (this.tasksListView.SelectedItems.Count > 0)
-                return this.tasksListView.SelectedItems[0].Text;
+            if (tasksListView.SelectedItems.Count > 0)
+                return int.Parse(tasksListView.SelectedItems[0].Text);
             else
-                return "";
+                return 0;
         }
 
         public void SetSelectedUserInGrid(CarrierTask usr)
@@ -93,5 +92,31 @@ namespace WinFormMVC.View
         }
 
         #endregion
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var selectedTaskId = GetIdOfSelectedUserInGrid();
+            _controller.CompleteTaskWithId(selectedTaskId); 
+        }
+
+        public void RemoveTaskFromListView(CarrierTask taskToRemove)
+        {
+            ListViewItem rowToRemove = null;
+
+            foreach (ListViewItem row in tasksListView.Items)
+            {
+                if (row.Text == taskToRemove.ID.ToString())
+                {
+                    rowToRemove = row;
+                }
+            }
+
+            if (rowToRemove != null)
+            {
+                tasksListView.Items.Remove(rowToRemove);
+                tasksListView.Focus();
+            }
+
+        }
     }
 }
