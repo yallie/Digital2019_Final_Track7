@@ -328,3 +328,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/bin/*.dll
+/bin/*.exe
+/bin/Nancy.Hosting.Self.xml
+/bin/Nancy.xml
+/bin/Track7.exe.config

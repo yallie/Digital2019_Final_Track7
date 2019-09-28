@@ -7,13 +7,11 @@ using Nancy;
 
 namespace Track7
 {
-	public class MainModule : NancyModule
+	public class RootModule : NancyModule
 	{
-		public MainModule() : base("/api/v1")
+		public RootModule()
 		{
-			Get("/hello", _ => "Hello World!");
-
-			Get("/tasks", _ => "Tasks");
+			Get("/", _ => Response.AsRedirect("/Content/index.html"));
 		}
 	}
 }
