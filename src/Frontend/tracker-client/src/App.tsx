@@ -6,6 +6,8 @@ import { useState } from 'react';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 import TaskList from './components/TaskList';
+import Overview from './components/Overview';
+
 const { Header, Content, Footer } = Layout;
 
 type Page =
@@ -16,6 +18,8 @@ type Page =
 
 function renderPage(page: Page) {
     switch (page) {
+        case 'main':
+            return <Overview/>
         case 'tasks':
             return <TaskList/>
         default:
