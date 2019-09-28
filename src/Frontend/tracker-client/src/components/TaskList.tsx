@@ -1,11 +1,12 @@
 import React from 'react';
-import { Table, Divider, Tag, Modal, Col, Row } from 'antd';
+import { Table, Divider, Tag, Modal, Col, Row, Select } from 'antd';
 
 import Map from 'pigeon-maps'
 import Marker from 'pigeon-marker'
 import Overlay from 'pigeon-overlay'
 
-import { trackedItems, ITrackedItem } from '../data/tasks'
+import { trackedItems, ITrackedItem, drivers } from '../data/tasks'
+import TrackedItemArticles from './TrackedItemArticles';
 
 const columns = [
     {
@@ -28,6 +29,7 @@ const columns = [
         title: 'Ответственный',
         dataIndex: 'driver',
         key: 'driver',
+        render: (n: string) => n
     },
     {
         title: 'Статус задачи',
@@ -53,27 +55,33 @@ const columns = [
     {
         title: 'Действия',
         key: 'action',
-        render: (text: string, record: any) => (
+        render: (text: string, record: ITrackedItem) => (
             <span>
                 <a>Чат с исполнителем</a>
                 <Divider type="vertical" />
-                <a>Сменить ответственного</a>
+                <a onClick={() => {
+                    let driverChange = (v: string) => {
+                        record.driver = v
+                    }
+                    Modal.confirm({
+                        title: "Смена ответственного",
+                        content: (
+                            <Select defaultValue={record.driver} onChange={driverChange}>
+                                {drivers.map(dr =>
+                                    <Select.Option value={dr}>
+                                        {dr}
+                                    </Select.Option>)
+                                }
+                            </Select>
+                        )
+                    })
+                }}>Сменить ответственного</a>
                 <Divider type="vertical" />
                 <a>Отменить задание</a>
             </span>
         ),
     },
 ];
-
-const articleColumns = [{
-    title: "Номенклатура",
-    key: "0",
-    dataIndex: "0",
-}, {
-    title: "Количество",
-    key: "1",
-    dataIndex: "1",
-}]
 
 export default function TaskList() {
     return (
@@ -112,7 +120,7 @@ export default function TaskList() {
                             </Map>
                         </Col>
                         <Col span={12}>
-                            <Table dataSource={record.articles} columns={articleColumns} />
+                            <TrackedItemArticles record={record} />
                         </Col>
                     </Row>
                 )

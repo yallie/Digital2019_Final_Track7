@@ -4,7 +4,8 @@ import Marker from 'pigeon-marker'
 import Overlay from 'pigeon-overlay'
 
 import { trackedItems, ITrackedItem } from '../data/tasks'
-import { Modal } from 'antd';
+import { Modal, Row, Col } from 'antd';
+import TrackedItemArticles from './TrackedItemArticles';
 
 interface IState {
     lat: number,
@@ -46,43 +47,34 @@ interface IState {
   }*/
 
 export default function Overview() {
-
     const [lat, setLat] = useState(55.704132)
     const [lng, setLng] = useState(37.608803)
     const [zoom, setZoom] = useState(13)
-    const position: [number, number] = [lat, lng];
+    const position: [number, number] = [lat, lng]
 
-    // const markers: [number, number][] = [
-    //     [55.705640, 37.589775],
-    //     [55.709780, 37.631195],
-    //     [55.641357, 37.687478],
-    //     [55.698100, 37.615176],
-    // ]
-    const markers = trackedItems
+    const [selectedRecord, setSelectedRecord] = useState(null as ITrackedItem | null)
 
     return (
-        <Map center={position} zoom={zoom} width={600} height={400}>
-            {markers.map(p =>
-                <Marker key={p.key} anchor={p.mapPosition} payload={2} onClick={
-                    ({ event, anchor, payload }: { event: any, anchor: any, payload: any }) => {
-                        Modal.info({
-                            title: p.name, 
-                            content: (
-                                <div>
-                                    <h3>{p.driver}</h3>
-                                    <ol>
-                                        {p.articles.map(a => <li key={a[0]}>{a[0]} — {a[1]} шт.</li>)}
-                                    </ol>
-                                </div>
-                            )
-                        })
+        <Row>
+            <Col span={12}>
+                <Map center={position} zoom={zoom} width={600} height={400}>
+                    {trackedItems.map(p =>
+                        <Marker key={p.key} anchor={p.mapPosition} payload={2} onClick={
+                            ({ event, anchor, payload }: { event: any, anchor: any, payload: any }) => {
+                                setSelectedRecord(p)
+                            }
+                        } />)
                     }
-                } />)
-            }
 
-            <Overlay anchor={position} offset={[120, 79]}>
-                <img src='pigeon.jpg' width={240} height={158} alt='' />
-            </Overlay>
-        </Map>
+                    <Overlay anchor={position} offset={[120, 79]}>
+                        <img src='pigeon.jpg' width={240} height={158} alt='' />
+                    </Overlay>
+                </Map>
+            </Col>
+            <Col span={12}>
+                {selectedRecord && <TrackedItemArticles record={selectedRecord} displayHeader={true} />}
+                {!selectedRecord && "Выберите маркер, чтобы посмотреть детали грузоотправления"}
+            </Col>
+        </Row>
     );
 }

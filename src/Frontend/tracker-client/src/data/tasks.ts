@@ -51,3 +51,5 @@ export const trackedItems: ITrackedItem[] = [
         articles: [["ГУ-01", 1000], ["ГУ-33", 1500]]
     },
 ];
+
+export const drivers = trackedItems.map(ts => ts.driver)

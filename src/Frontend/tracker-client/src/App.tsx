@@ -66,12 +66,12 @@ const App: React.FC = () => {
 				</Breadcrumb>
 
 				<div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                    {renderPage(page)}
+					{renderPage(page)}
 				</div>
 
 			</Content>
 
-			<Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+			<Footer style={{ textAlign: 'center' }}>Не паникуй! ©2019 Цифровой прорыв</Footer>
 		</Layout>
 	);
 }
