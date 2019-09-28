@@ -97,8 +97,8 @@ const data: ITrackedItem[] = [
     age: 88,
     driver: 'Алексей Новоселов',
     tags: ['отклонение', 'задержка'],
-    mapCenter: [55.709780, 37.631195],
-    mapPosition: [55.709780, 37.631195],
+    mapCenter: [55.705640, 37.589775],
+    mapPosition: [55.705640, 37.589775],
   },
 ];
 
