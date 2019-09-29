@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Divider, Tag, Modal, Col, Row, Select, Button } from 'antd';
+import { Table, Divider, Tag, Modal, Col, Row, Select, Button, Comment, Avatar, Input, Form } from 'antd';
 
 import Map from 'pigeon-maps'
 import Marker from 'pigeon-marker'
@@ -7,11 +7,46 @@ import Overlay from 'pigeon-overlay'
 
 import { trackedItems, ITrackedItem, drivers } from '../data/tasks'
 import TrackedItemArticles from './TrackedItemArticles';
+import TextArea from 'antd/lib/input/TextArea';
 
 const chatStub = (n: string) => () => {
+    const hisAvatar = <Avatar
+        src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4e/4ea16cbf6b6dc436b7845cca081960ec33e5b10a.jpg"
+        alt={n}
+    />
+
+    const myAvatar = <Avatar
+        src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ea/eabf1f87c69a23f0221672f7ee8a2f83487e7b18.jpg"
+        alt={n}
+    />
+
     Modal.info({
-        title: "Чат: " + n,
-        content: "Чат с исполнителем",
+        title: "Чат: " + n, // https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png
+        content: (
+            <div>
+                <Comment author={<a>{n}</a>} avatar={hisAvatar} content={<p>Босс, похоже,у нас проблемы!</p>} datetime={"сегодня 10:12"} >
+                    <Comment author={<a>Я</a>} avatar={myAvatar} content={<p>Что случилось?</p>} datetime={"сегодня 10:12"} />
+                </Comment>
+                <Comment author={<a>{n}</a>} avatar={hisAvatar} content={<p>Контейнер не проходит в ворота.</p>} datetime={"сегодня 10:12"} />
+                <Comment
+                    author={<a>Я</a>} avatar={myAvatar}
+                    content={
+                        <div>
+                            <Form.Item>
+                                <TextArea rows={4} />
+                            </Form.Item>
+                            <Form.Item>
+                                <Button htmlType="submit" type="primary">
+                                    Отправить
+                                </Button>
+                            </Form.Item>
+                        </div>
+                    }
+                />
+            </div>
+        ),
+        okText: "Закрыть чат",
+        okType: "danger"
     })
 }
 
