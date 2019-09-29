@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Divider, Tag, Modal, Col, Row, Select, Button, Comment, Avatar, Input, Form } from 'antd';
+import { Table, Divider, Tag, Modal, Col, Row, Select, Button, Comment, Avatar, Input, Form, Popconfirm } from 'antd';
 
 import Map from 'pigeon-maps'
 import Marker from 'pigeon-marker'
@@ -119,7 +119,13 @@ const columns = [
                     })
                 }}>Сменить ответственного</a>
                 <Divider type="vertical" />
-                <a>Отменить задание</a>
+                <Popconfirm
+                    title="Вы уверены, что хотите отменить задание?"
+                    okText="Да"
+                    cancelText="Нет"
+                >
+                    <a>Отменить задание</a>
+                </Popconfirm>
             </span>
         ),
     },
