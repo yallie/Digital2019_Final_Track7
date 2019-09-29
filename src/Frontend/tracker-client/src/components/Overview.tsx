@@ -56,7 +56,7 @@ export default function Overview() {
 
     return (
         <Row>
-            <Col span={12}>
+            <Col span={16}>
                 <Map center={position} zoom={zoom} width={600} height={400}>
                     {trackedItems.map(p =>
                         <Marker key={p.key} anchor={p.mapPosition} payload={2} onClick={
@@ -71,7 +71,7 @@ export default function Overview() {
                     </Overlay>
                 </Map>
             </Col>
-            <Col span={12}>
+            <Col span={8}>
                 {selectedRecord && <TrackedItemArticles record={selectedRecord} displayHeader={true} />}
                 {!selectedRecord && "Выберите маркер, чтобы посмотреть детали грузоотправления"}
             </Col>
