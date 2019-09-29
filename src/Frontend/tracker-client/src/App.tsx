@@ -57,8 +57,7 @@ const App: React.FC = () => {
 				>
 					<Menu.Item key="main" onClick={getSetPage("main")}>Главная</Menu.Item>
 					<Menu.Item key="tasks" onClick={getSetPage("tasks")}>Мониторинг задач</Menu.Item>
-					<Menu.Item key="maps" onClick={getSetPage1()}>Редактор карт1</Menu.Item>
-					<Menu.Item key="plan" onClick={getSetPage('plan')}>Редактор карт2</Menu.Item>
+					<Menu.Item key="maps" onClick={getSetPage1()}>Редактор карт</Menu.Item>
 					<Menu.Item key="admin" onClick={getSetPage("admin")}>Администратор</Menu.Item>
 				</Menu>
 			</Header>
