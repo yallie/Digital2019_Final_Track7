@@ -8,6 +8,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import TaskList from './components/TaskList';
 import Overview from './components/Overview';
 import PlanEditor from './components/PlanEditor';
+import Optimizer from './components/Optimizer';
 
 const { Header, Content, Footer } = Layout;
 
@@ -17,6 +18,7 @@ type Page =
     | 'maps'
     | 'plan'
     | 'admin'
+    | 'optimizer'
 
 function renderPage(page: Page) {
     switch (page) {
@@ -26,6 +28,8 @@ function renderPage(page: Page) {
             return <TaskList/>
         case 'plan':
             return <PlanEditor />
+        case 'optimizer':
+            return <Optimizer />
         default:
             return '404'
     }
@@ -58,6 +62,7 @@ const App: React.FC = () => {
 					<Menu.Item key="main" onClick={getSetPage("main")}>Главная</Menu.Item>
 					<Menu.Item key="tasks" onClick={getSetPage("tasks")}>Список исполнителей</Menu.Item>
 					<Menu.Item key="maps" onClick={getSetPage1()}>Редактор карт</Menu.Item>
+					<Menu.Item key="maps" onClick={getSetPage("optimizer")}>Расстановка чекпойнтов</Menu.Item>
 				</Menu>
 			</Header>
 
